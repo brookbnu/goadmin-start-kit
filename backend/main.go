@@ -1,6 +1,7 @@
 package main
 
 import (
+	"adsk/pages"
 	"adsk/tables"
 	_ "github.com/GoAdminGroup/go-admin/adapter/gin" // 适配器
 	"github.com/GoAdminGroup/go-admin/engine"
@@ -52,6 +53,12 @@ func main() {
 	r.Static("/uploads", "./uploads")
 
 	eng.HTML("GET", "/admin", datamodel.GetContent)
+	//eng.HTML("GET", "/admin", pages.DashboardPage)
+	eng.HTML("GET", "/admin/form", pages.GetFormContent)
+	eng.HTML("GET", "/admin/table", pages.GetTableContent)
+	eng.HTMLFile("GET", "/admin/hello", "./html/hello.tmpl", map[string]interface{}{
+		"msg": "Hello world",
+	})
 
 	_ = r.Run(":9033")
 }
