@@ -1,9 +1,9 @@
 package main
 
 import (
-	_ "github.com/GoAdminGroup/go-admin/adapter/gin"               // 适配器
+	_ "github.com/GoAdminGroup/go-admin/adapter/gin"              // 适配器
 	_ "github.com/GoAdminGroup/go-admin/modules/db/drivers/mysql" // sql 驱动
-	_ "github.com/GoAdminGroup/themes/adminlte"                    // ui主题
+	_ "github.com/GoAdminGroup/themes/adminlte"                   // ui主题
 
 	"github.com/GoAdminGroup/go-admin/engine"
 	"github.com/GoAdminGroup/go-admin/examples/datamodel"
