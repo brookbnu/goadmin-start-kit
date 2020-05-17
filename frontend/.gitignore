@@ -1,0 +1,8 @@
+.idea
+node_modules
+frontend/backend
+dist
+npm-debug.log
+coverage
+reports
+selenium-debug.log
