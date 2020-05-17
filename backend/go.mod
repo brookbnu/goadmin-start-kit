@@ -1,4 +1,4 @@
-module https: //github.com/brookbnu/goadmin-starter-kit
+module adsk
 
 go 1.14
 

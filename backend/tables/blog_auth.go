@@ -1,4 +1,4 @@
-package main
+package tables
 
 import (
 	"github.com/GoAdminGroup/go-admin/context"

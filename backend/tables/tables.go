@@ -19,4 +19,7 @@ var Generators = map[string]table.Generator{
 	"posts":   GetPostsTable,
 	"users":   GetUserTable,
 	"authors": GetAuthorsTable,
+	"blog_article": GetBlogArticleTable,
+	"blog_auth": GetBlogAuthTable,
+	"blog_tag": GetBlogTagTable,
 }
