@@ -23,12 +23,17 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	gin.DefaultWriter = ioutil.Discard
 
+	// 实例化一个GoAdmin引擎对象
 	eng := engine.Default()
 
 	template.AddComp(chartjs.NewChart())
 
+	// GoAdmin全局配置，也可以写成一个json，通过json引入
+	// 增加配置与插件，使用Use方法挂载到Web框架中
 	if err := eng.AddConfig(config.Config{
+		// 数据库配置，为一个map，key为连接名，value为对应连接信息
 		Databases: config.DatabaseList{
+			// 默认数据库连接，名字必须为default
 			"default": {
 				Host:       "127.0.0.1",
 				Port:       "3306",
@@ -39,12 +44,24 @@ func main() {
 				MaxOpenCon: 150,
 				Driver:     db.DriverMysql,
 			},
+			"business": {
+				Host:       "127.0.0.1",
+				Port:       "3306",
+				User:       "root",
+				Pwd:        "Magento@123",
+				Name:       "admin_business",
+				MaxIdleCon: 50,
+				MaxOpenCon: 150,
+				Driver:     db.DriverMysql,
+			},
 		},
 		UrlPrefix: "admin",
 		IndexUrl:  "/",
 		Debug:     true,
 		Language:  language.CN,
 	}).
+		// 这里引入你需要管理的业务表配置
+		// 使用 adm generate 命令行根据你自己的业务表生成 Generators
 		AddGenerators(tables.Generators).
 		Use(r); err != nil {
 		panic(err)
